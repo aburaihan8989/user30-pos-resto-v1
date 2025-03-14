@@ -57,6 +57,8 @@
                                             <th>No</th>
                                             <th>Transaction Time</th>
                                             <th>Total Price</th>
+                                            <th>Pajak (PPN 11%)</th>
+                                            <th>Grand Total</th>
                                             <th>Total Item</th>
                                             <th>Payment Method</th>
                                             <th>Nama Kasir</th>
@@ -72,6 +74,12 @@
                                                 </td>
                                                 <td>
                                                     Rp. {{ number_format(($order->total_price), 0, ",", ".") }}
+                                                </td>
+                                                <td>
+                                                    Rp. {{ number_format(($order->total_price * 0.11), 0, ",", ".") }}
+                                                </td>
+                                                <td>
+                                                    Rp. {{ number_format(($order->total_price + ($order->total_price * 0.11)), 0, ",", ".") }}
                                                 </td>
                                                 <td>
                                                     {{ $order->total_item }}

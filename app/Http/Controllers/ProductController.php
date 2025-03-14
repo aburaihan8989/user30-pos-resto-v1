@@ -32,8 +32,7 @@ class ProductController extends Controller
             'name' => 'required|min:3|unique:products',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            // 'stock' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
+            'category' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
@@ -68,9 +67,7 @@ class ProductController extends Controller
             'name' => 'required|min:3',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            // 'stock' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
-            // 'image' => 'required|image|mimes:png,jpg,jpeg'
+            'category' => 'required'
         ]);
 
         if ($request->has('image')) {
