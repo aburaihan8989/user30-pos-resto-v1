@@ -120,7 +120,7 @@
                                                             </form>
                                                         @else
                                                             <a href='#'
-                                                                class="btn btn-sm btn-secondary btn-icon">
+                                                                class="btn btn-sm btn-secondary btn-icon ml-2">
                                                                 <i class="fas fa-times"></i>
                                                                 Delete
                                                             </a>
