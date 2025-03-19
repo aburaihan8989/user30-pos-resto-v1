@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Cost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -63,6 +64,9 @@ class DashboardController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
+        $total_costs = Cost::sum('price');
+        $cost_today = Cost::whereDate('created_at',date('Y-m-d'))->sum('price');
+        $cost_before = Cost::whereDate('created_at',date('Y-m-d',strtotime("yesterday")))->sum('price');
 
         return view('pages.dashboard', [
             'total_sales'     => $total_sales,
@@ -76,6 +80,9 @@ class DashboardController extends Controller
             'sales_monthly'   => $sales_monthly,
             'produk_kurang'   => $produk_kurang,
             'produk_habis'    => $produk_habis,
+            'total_costs'     => $total_costs,
+            'cost_today'      => $cost_today,
+            'cost_before'     => $cost_before,
             'top_sales'       => $top_sales
         ]);
     }

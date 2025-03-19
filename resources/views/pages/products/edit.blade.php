@@ -25,7 +25,7 @@
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Products</h2>
+                <h2 class="section-title">Product</h2>
 
                 <div class="card">
                     <form action="{{ route('product.update', $product) }}" method="POST"  enctype="multipart/form-data">

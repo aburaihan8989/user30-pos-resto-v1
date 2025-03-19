@@ -139,6 +139,53 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Total Pengeluaran</h4>
+                            </div>
+                            <div class="card-body">
+                                Rp. {{ number_format(($total_costs), 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Pengeluaran Hari Ini</h4>
+                            </div>
+                            <div class="card-body">
+                                Rp. {{ number_format(($cost_today), 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Pengeluaran Hari Kemarin</h4>
+                            </div>
+                            <div class="card-body">
+                                Rp. {{ number_format(($cost_before), 0, ",", ".") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
