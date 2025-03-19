@@ -72,8 +72,11 @@
                                             <th>Category</th>
                                             <th>Cost Price</th>
                                             <th>Sell Price</th>
+                                            <th>Standar Stock</th>
+                                            <th>Actual Stock</th>
+                                            <th>Status Stock</th>
                                             <th>Photo</th>
-                                            <th>Created At</th>
+                                            {{-- <th>Created At</th> --}}
                                             <th>Action</th>
                                         </tr>
                                         <?php $no = 1; ?>
@@ -101,6 +104,22 @@
                                                 <td>
                                                     Rp. {{ number_format(($product->price), 0, ",", ".") }}
                                                 </td>
+                                                <td align="center">
+                                                    {{ $product->std_stock }}
+                                                </td>
+                                                <td align="center">
+                                                    {{ $product->stock }}
+                                                </td>
+                                                <td>
+                                                    @if ($product->stock <= 0)
+                                                        <span class="badge badge-danger">Habis</span>
+                                                    @elseif ($product->stock > 0 & $product->stock < $product->std_stock)
+                                                        <span class="badge badge-warning">Kurang</span>
+                                                    @elseif ($product->stock >= $product->std_stock)
+                                                        <span class="badge badge-success">Banyak</span>
+                                                    @else
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if ($product->image)
                                                         <img src="{{ asset('storage/products/'.$product->image) }}" alt=""
@@ -109,9 +128,9 @@
                                                             <span class="badge badge-danger">No Image</span>
                                                     @endif
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {{ $product->created_at }}
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex">
                                                         @if ( auth()->user()->roles == "admin" )
@@ -129,16 +148,16 @@
                                                         @endif
 
                                                         {{-- <form action="#"> --}}
-                                                            <form action="{{ route('product.destroy', $product->id) }}"
-                                                                method="POST" class="ml-2">
-                                                                <input type="hidden" name="_method" value="DELETE" />
-                                                                <input type="hidden" name="_token"
-                                                                    value="{{ csrf_token() }}" />
-                                                                    <button class="btn btn-sm btn-danger btn-icon confirm-delete ml-2">
-                                                                    <i class="fas fa-times"></i> Delete
-                                                                </button>
-                                                            </form>
-                                                        </div>
+                                                        <form action="{{ route('product.destroy', $product->id) }}"
+                                                            method="POST" class="ml-2">
+                                                            <input type="hidden" name="_method" value="DELETE" />
+                                                            <input type="hidden" name="_token"
+                                                                value="{{ csrf_token() }}" />
+                                                                <button class="btn btn-sm btn-danger btn-icon confirm-delete ml-2">
+                                                                <i class="fas fa-times"></i> Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <?php $no++; ?>

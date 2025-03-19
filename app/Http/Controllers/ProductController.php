@@ -32,6 +32,8 @@ class ProductController extends Controller
             'name' => 'required|min:3|unique:products',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
+            'std_stock' => 'required|integer',
+            'stock' => 'required|integer',
             'category' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
@@ -44,7 +46,8 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->cost_price = (int) $request->cost_price;
         $product->price = (int) $request->price;
-        // $product->stock = (int) $request->stock;
+        $product->std_stock = (int) $request->std_stock;
+        $product->stock = (int) $request->stock;
         $product->category = $request->category;
         $product->image = $filename;
         $product->save();
@@ -67,7 +70,10 @@ class ProductController extends Controller
             'name' => 'required|min:3',
             'cost_price' => 'required|integer',
             'price' => 'required|integer',
-            'category' => 'required'
+            'std_stock' => 'required|integer',
+            'stock' => 'required|integer',
+            'category' => 'required',
+            // 'image' => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
         if ($request->has('image')) {
@@ -80,7 +86,8 @@ class ProductController extends Controller
             $product->name = $request->name;
             $product->cost_price = (int) $request->cost_price;
             $product->price = (int) $request->price;
-            // $product->stock = (int) $request->stock;
+            $product->std_stock = (int) $request->std_stock;
+            $product->stock = (int) $request->stock;
             $product->category = $request->category;
             $product->image = $filename;
             $product->update();
@@ -92,6 +99,7 @@ class ProductController extends Controller
             $product->name = $request->name;
             $product->cost_price = (int) $request->cost_price;
             $product->price = (int) $request->price;
+            $product->std_stock = (int) $request->std_stock;
             $product->stock = (int) $request->stock;
             $product->category = $request->category;
             $product->update();

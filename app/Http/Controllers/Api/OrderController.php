@@ -39,6 +39,9 @@ class OrderController extends Controller
                 'quantity' => $item['quantity'],
                 'total_price' => $item['total_price'],
             ]);
+            $product = \App\Models\Product::where('id',$item['product_id'])->first();
+            $product->stock = $product->stock - $item['quantity'];
+            $product->save();
         }
 
         //response
